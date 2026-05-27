@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+
+  progressLogs    ProgressLog[] @relation("UserLogs")
+  approvedLogs    ProgressLog[] @relation("AdminApprovals")
+  certificate     Certificate?
+}
+
+model ProgressLog {
+  id             String         @id @default(uuid())
+  userId         String
+  approvedBy     String?
+  timeStarted    DateTime
+  timeFinished   DateTime
+  juz            String 
+  startedSurah   String
+  startedAyah    Int
+  finishedSurah  String
+  finishedAyah   Int
+  status         ApprovalStatus @default(PENDING)
+  createdAt      DateTime       @default(now())
+
+  user     User  @relation("UserLogs", fields: [userId], references: [id])
+  approver User? @relation("AdminApprovals", fields: [approvedBy], references: [id])
+}
+
+model Certificate {
+  id       String   @id @default(uuid())
+  userId   String   @unique
+  fileUrl  String
+  issuedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
