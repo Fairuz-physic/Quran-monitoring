@@ -161,8 +161,7 @@ export default function Login() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              ERROR MESSAGE
+            <form onSubmit={handleSubmit} className="space-y-6"> 
               {error && (
                 <div className="bg-red-500/10 border border-red-500/30 rounded-2xl px-5 py-4 text-red-400">
                 {error}
