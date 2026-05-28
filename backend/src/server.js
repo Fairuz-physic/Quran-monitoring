@@ -11,8 +11,10 @@ const app = express();
 const PORT = 5001;
 
 app.use(cors({
-  origin: "*",
-  credentials: false
+  origin: "https://quran-monitoring.vercel.app",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
 app.use(express.json());
