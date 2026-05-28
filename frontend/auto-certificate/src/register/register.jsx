@@ -45,7 +45,7 @@ export default function RegisterPage() {
     }
 
     try {
-      const res = await fetch("https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/auth/register", {
+      const res = await fetch("https://quran-monitoring-cq7u.vercel.app/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
