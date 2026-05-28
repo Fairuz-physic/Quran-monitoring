@@ -37,30 +37,10 @@ app.patch('/progress/:id/status', async (req, res) => {
   }
 });
 
-const server = app.listen(PORT, () =>{
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`);
-})
-
-process.on("unhandledRejection", (err) => {
-  console.error("Unhandled Rejection:", err);
-  server.close(async () => {
-    await disconnectDB();
-    process.exit(1);
   });
-});
+}
 
-// Handle uncaught exceptions
-process.on("uncaughtException", async (err) => {
-  console.error("Uncaught Exception:", err);
-  await disconnectDB();
-  process.exit(1);
-});
-
-// Graceful shutdown
-process.on("SIGTERM", async () => {
-  console.log("SIGTERM received, shutting down gracefully");
-  server.close(async () => {
-    await disconnectDB();
-    process.exit(0);
-  });
-});
+export default app;
