@@ -3,7 +3,7 @@ export async function fetchAllProgress() {
   try {
 
     const res = await fetch(
-      "http://localhost:5001/auth/login/getAllProgress",
+      "https://quran-monitoring-cq7u.vercel.app/auth/login/getAllProgress",
     );
 
     const data = await res.json();

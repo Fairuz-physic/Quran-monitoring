@@ -5,7 +5,7 @@ export async function fetchProgres() {
     const token = localStorage.getItem("token");
 
     const res = await fetch(
-      "http://localhost:5001/auth/login/getProgres",
+      "https://quran-monitoring-cq7u.vercel.app/auth/login/getProgres",
       {
         headers: {
           Authorization: `Bearer ${token}`,

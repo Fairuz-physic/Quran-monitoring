@@ -5,7 +5,7 @@ export async function fetchUser() {
     const token = localStorage.getItem("token");
 
     const res = await fetch(
-      "http://localhost:5001/auth/login/me",
+      "https://quran-monitoring-cq7u.vercel.app/auth/login/me",
       {
         headers: {
           Authorization: `Bearer ${token}`,
