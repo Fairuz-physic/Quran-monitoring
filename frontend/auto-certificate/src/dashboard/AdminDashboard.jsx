@@ -324,7 +324,7 @@ export default function AdminDashboard() {
       setUsersLoading(true);
       setUsersError(null);
       try {
-        const res  = await fetch("https://quran-monitoring-esrc-nxvsa6j1f-fairuz-physic1.vercel.app/auth/login/getAllUser");
+        const res  = await fetch("https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/auth/login/getAllUser");
         if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
         const json = await res.json();
         setUsers(json.data.map(transformUser));
@@ -343,7 +343,7 @@ export default function AdminDashboard() {
       setProgressLoading(true);
       setProgressError(null);
       try {
-        const res  = await fetch("https://quran-monitoring-esrc-nxvsa6j1f-fairuz-physic1.vercel.app/auth/login/getAllProgress");
+        const res  = await fetch("https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/auth/login/getAllProgress");
         if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
         const json = await res.json();
         const allLogs = json.data.map(transformLog);
@@ -359,7 +359,7 @@ export default function AdminDashboard() {
 
   const updateLog = async (id, newStatus) => {
     try {
-      const res = await fetch(`https://quran-monitoring-esrc-nxvsa6j1f-fairuz-physic1.vercel.app/progress/${id}/status`, {
+      const res = await fetch(`https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/progress/${id}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus.toUpperCase() }), // "APPROVED" or "REJECTED"

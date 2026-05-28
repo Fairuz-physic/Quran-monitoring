@@ -64,7 +64,7 @@ function useUser() {
 }
 
 async function dataProgres() {
-  const res = await fetch("https://quran-monitoring-esrc-nxvsa6j1f-fairuz-physic1.vercel.app/auth/login/getProgres", {
+  const res = await fetch("https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/auth/login/getProgres", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(),
@@ -112,7 +112,7 @@ function StatusBadge({ status }) {
 
 const handleLogout = async () => {
   try {
-    const res = await fetch("https://quran-monitoring-esrc-nxvsa6j1f-fairuz-physic1.vercel.app/auth/logout", {
+    const res = await fetch("https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/auth/logout", {
       method: "POST",
       credentials: "include", // 👈 THIS is the key — sends & clears the cookie
     });
@@ -375,7 +375,7 @@ function LogbookPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("https://quran-monitoring-esrc-nxvsa6j1f-fairuz-physic1.vercel.app/auth/login/receiveData", {
+      const res = await fetch("https://quran-monitoring-cq7u-98gjz2u1f-fairuz-physic1.vercel.app/auth/login/receiveData", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
